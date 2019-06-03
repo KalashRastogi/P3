@@ -1,17 +1,15 @@
 #include<stdio.h>
 #include<math.h>
 int main(){
-    double sum = 0, term,temp=-1;
-    int angle,fac=3,i,iterations;
-    scanf("%d %d",&angle,&iterations);
+    double angle, sum , term;
+    int i,iterations;
+    scanf("%lf %d",&angle,&iterations);
     term = (double)(angle*3.14)/180;
-    printf("%lf",term);
+    angle = term;
     sum = term;
-    for(i=0;i<iterations;i++){
-        term = temp*((term*angle*angle)/(fac*(fac-1)));
+    for(i=2;i<=iterations;i++){
+        term = -1*((term*angle*angle)/((2*i-1)*(2*i-2)));
         sum+=term;
-        fac+=2;
-        temp=temp*(-1);
     }
     printf("%lf", sum);
     return 0;
