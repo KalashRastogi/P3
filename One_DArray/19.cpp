@@ -14,7 +14,7 @@ int main(){
         max=a[1];
         smax=a[0];
     }
-    for(int i=0;i<n;i++){
+    for(int i=2;i<n;i++){
         if(a[i]>max){
             smax=max;
             max=a[i];
@@ -23,6 +23,17 @@ int main(){
             smax=a[i];
         }
     }
-    cout<<smax;
+    for(int j=0;j<n;j++){
+        if(a[j]==smax){
+            for(int i=j;i<n-1;i++){
+                a[i]=a[i+1];
+            }
+            break;
+        }
+    }
+    n-=1;
+    for(int i=0;i<n;i++){
+        cout<<a[i]<<" ";
+    }
     return 0;
 }
