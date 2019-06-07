@@ -2,7 +2,7 @@
 using namespace std;
 long int powerFulpow(int n1,int n2){
     if(n2==1){
-        return 2;
+        return n1;
     }
     return pow(powerFulpow(n1,n2/2),2);
 }
