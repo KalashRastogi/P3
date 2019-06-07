@@ -3,38 +3,51 @@ using namespace std;
 int main(){
     int m,n;
     cin>>m>>n;
-    int a[m],b[n],c[m+n];
+    int a[m],b[n];
     for(int i=0;i<m;i++){
         cin>>a[i];
     }
     for(int i=0;i<n;i++){
         cin>>b[i];
     }
-    int i=0,j=0,k=0;
+    int i=0,j=0,temp1=-1;
     while(i<m && j<n){
-        if(a[i]<=b[j]){
-            c[k]=a[i];
-            k++;
+        if(a[i]==temp1){
             i++;
         }
-        else{
-            c[k]=b[j];
-            k++;
+        else if(b[j]==temp1){
             j++;
         }
-    }
+        else if(a[i]<b[j] ){
+            cout<<a[i];
+            temp1=a[i];
+            i++;
+        }
+        else if(b[j]<a[i]){
+            cout<<b[j];
+            temp1=b[j];
+            j++;
+        }
+        else{
+            cout<<a[i];
+            temp1=a[i];
+            i++;
+            j++;
+        }
+    }    
     while(i<m){
-        c[k]=a[i];
-        k++;
+        if(a[i]!=temp1){
+            cout<<a[i];
+            temp1=a[i];
+        }
         i++;
     }
     while(j<n){
-        c[k]=b[j];
-        k++;
+        if(b[j]!=temp1){
+            cout<<b[j];
+            temp1=b[j];
+        }
         j++;
-    }
-    for(int i=0;i<k;i++){
-        cout<<c[i]<<" ";
     }
     return 0;
 }
