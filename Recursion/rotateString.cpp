@@ -1,5 +1,13 @@
 #include<bits/stdc++.h>
 using namespace std;
+void rotateString(char *s,int start,int end,char last){
+    if(start==end){
+        s[end-2]=last;
+        return;
+    }
+    s[(start-1)==-1?(end-1):(start-1)]=s[start];
+    rotateString(s,start+1,end,last);
+}
 int main(){
     char *str,c;
     str=(char*)malloc(sizeof(char));
@@ -10,12 +18,7 @@ int main(){
         str=(char*)realloc(str,(len+=index)*sizeof(char));
     }
     len=strlen(str);
-    for(int i=0;i<=len-1;i++){
-        string p="";
-        for(int j=i;j<=len-1;j++){
-            p=p+str[j];
-            cout<<p<<endl;
-        }
-    }
+    rotateString(str,0,len,str[len-1]);
+    cout<<str;
     return 0;
 }
