@@ -1,4 +1,3 @@
-/*not commpleted*/
 #include<bits/stdc++.h>
 using namespace std;
 int main(){
@@ -11,9 +10,15 @@ int main(){
     for(int i=0;i<n;i++){
         cin>>b[i];
     }
-    int i=0,j=0;
+    int i=0,j=0,temp;
     while(i<m && j<n){
-        if(a[i]<=b[j]){
+        if(a[i]==b[j]){
+            i++;
+            j++;
+            temp=a[i];
+        }
+        else if(a[i]<b[j]){
+            cout<<a[i]<<" ";
             i++;
         }
         else{
@@ -21,10 +26,8 @@ int main(){
         }
     }
     while(i<m){
+        cout<<a[i]<<" ";
         i++;
-    }
-    while(j<n){
-        j++;
     }
     return 0;
 }
