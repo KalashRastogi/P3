@@ -1,3 +1,4 @@
+/*This problem is same as detecting loop in linked list*/
 /*Floyd's cycle detection*/
 #include "linkedlistfunctions.h"
 using namespace std;
