@@ -101,6 +101,34 @@ void deleteNode(Node **head, int val){
         }
     }
 }
+void deletePointer(Node **head, Node *ptr){
+    if(*head == NULL){
+        cout<<"List is empty!";
+        return;
+    }
+    else{
+        Node *temp=*head;
+        if(*head==ptr){
+            *head=(*head)->next;
+            delete(temp);
+        }
+        else{
+            Node *prevNode;
+            while(temp!=NULL && temp != ptr){
+                prevNode=temp;
+                temp=temp->next;
+            }
+            if(temp==NULL){
+                cout<<"No such element is found!"<<endl;
+                return;
+            }
+            else{
+                prevNode->next=temp->next;
+                delete(temp);           
+            }
+        }
+    }
+}
 void deleteFromFront(Node **head){
     Node *temp=*head;
     if(*head==NULL){
@@ -119,4 +147,22 @@ void deleteFromBack(Node **head){
     }
     prevNode->next=NULL;
     delete(temp);
+}
+void reverseList(Node **head){
+    Node *back=NULL,*current=*head,*ahead;
+    while(current!=NULL){
+        ahead=current->next;
+        current->next=back;
+        back=current;
+        current=ahead;
+    }
+    *head=back;
+}
+int listLength(Node *head){
+    int counter=0;
+    while(head!=NULL){
+        counter++;
+        head=head->next;
+    }
+    return counter;
 }

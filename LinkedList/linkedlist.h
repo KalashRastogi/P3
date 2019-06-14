@@ -12,3 +12,5 @@ void deleteFromFront(Node **);
 void deleteFromBack(Node **);
 void deleteNode(Node **, int);
 void printList(Node*);
+void reverseList(Node **);
+int listLength(Node *);
