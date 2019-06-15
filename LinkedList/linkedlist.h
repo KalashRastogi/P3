@@ -14,3 +14,4 @@ void deleteNode(Node **, int);
 void printList(Node*);
 void reverseList(Node **);
 int listLength(Node *);
+void split(Node*,Node **,Node **);

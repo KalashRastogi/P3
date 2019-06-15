@@ -166,3 +166,65 @@ int listLength(Node *head){
     }
     return counter;
 }
+void split(Node *head,Node** first, Node** second){
+    *first=head;
+    int len=listLength(head);
+    len=ceil((float)len/2);
+    while(len>1){
+        head=head->next;
+        len--;
+    }
+    *second=head->next;
+    head->next=NULL;
+}
+Node* merge(Node* firstPart, Node* secondPart){
+    Node *head;
+    head=firstPart;
+    while(firstPart->next!=NULL){
+        firstPart=firstPart->next;
+    }
+    firstPart->next=secondPart;
+    return head;
+}
+Node* mergeLists(Node *first, Node* second){
+    Node *head=NULL;
+    while(first!=NULL && second!=NULL){
+        if((first->data)<(second->data)){
+            insertAtBack(&head,first->data);
+            first=first->next;
+        }
+        else if((first->data)>(second->data)){
+            insertAtBack(&head,second->data);
+            second=second->next;
+        } 
+        else{
+            insertAtBack(&head,first->data);
+            insertAtBack(&head,second->data);
+            first=first->next;
+            second=second->next;
+        }
+    }
+    while(first!=NULL){
+        insertAtBack(&head,first->data);
+        first=first->next;
+    }
+    while(second!=NULL){
+        insertAtBack(&head,second->data);
+        second=second->next;
+    }
+    return head;
+}
+void mergeSort(Node **head){
+    Node *hptr=*head;
+    Node *first,*second;
+    if(hptr==NULL || hptr->next==NULL){
+        return;
+    }
+    split(hptr,&first,&second);
+    printList(first);
+    printList(second);
+    mergeSort(&first);
+    mergeSort(&second);
+    *head = mergeLists(first, second);
+    printList(*head);
+}
