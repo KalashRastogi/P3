@@ -4,6 +4,7 @@ int main(){
     int n;
     cin>>n;
     int a[n];
+    a[n]=INT_MIN;
     for(int i=0;i<n;i++){
         cin>>a[i];
     }
