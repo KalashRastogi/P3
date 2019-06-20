@@ -19,7 +19,7 @@ int height(Node* root){
 	}
 	return max(height(root->left), height(root->right))+1;
 }
-void printLevel(Node* root, int level,bool stop){
+void printLevel(Node* root, int level,bool &stop){
 	if(root==NULL){
 		return;
 	}
